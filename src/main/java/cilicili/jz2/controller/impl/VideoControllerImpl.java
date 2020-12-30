@@ -48,6 +48,7 @@ public class VideoControllerImpl implements IVideoController {
 			result.put("status", "success");
 			result.put("video", video);
 		}
+
 		return result;
 	}
 

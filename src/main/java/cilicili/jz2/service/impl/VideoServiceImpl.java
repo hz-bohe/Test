@@ -55,6 +55,6 @@ public class VideoServiceImpl implements IVideoService {
 
 	@Override
 	public List<Video> showCollection(Integer userId) {
-		return collectionMapper.showcollections(userId);
+		return videoMapper.showcollections(userId);
 	}
 }

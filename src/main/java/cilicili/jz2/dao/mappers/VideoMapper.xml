@@ -107,12 +107,12 @@
     </if>
   </delete>
   <insert id="insert" parameterType="cilicili.jz2.pojo.Video">
-    insert into videos (id, title, url, 
-      upload_userid, upload_time, count_play, 
+    insert into videos (id, title, url,
+      upload_userid, upload_time, count_play,
       count_like, pic_url, description
       )
-    values (#{id,jdbcType=INTEGER}, #{title,jdbcType=VARCHAR}, #{url,jdbcType=VARCHAR}, 
-      #{uploadUserid,jdbcType=INTEGER}, #{uploadTime,jdbcType=TIMESTAMP}, #{countPlay,jdbcType=INTEGER}, 
+    values (#{id,jdbcType=INTEGER}, #{title,jdbcType=VARCHAR}, #{url,jdbcType=VARCHAR},
+      #{uploadUserid,jdbcType=INTEGER}, #{uploadTime,jdbcType=TIMESTAMP}, #{countPlay,jdbcType=INTEGER},
       #{countLike,jdbcType=INTEGER}, #{picUrl,jdbcType=VARCHAR}, #{description,jdbcType=VARCHAR}
       )
   </insert>
@@ -275,4 +275,16 @@
       description = #{description,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
+  <select id="showcollections" resultMap="BaseResultMap">
+    SELECT *
+    FROM videos AS a
+      JOIN
+      (SELECT
+         user_id,
+         video_id
+       FROM collection) AS b
+        ON a.id = b.video_id
+    WHERE b.user_id = #{userId}
+    ORDER BY a.id DESC
+  </select>
 </mapper>

@@ -9,10 +9,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.ExceptionHandler;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import java.io.Serializable;
 import java.time.Period;
@@ -22,16 +19,17 @@ import java.util.Map;
 @Controller
 public class LoginControllerImpl implements ILoginController {
 	private final UserServiceImpl userService;
-	
+
 	@Autowired
 	public LoginControllerImpl(UserServiceImpl userService) {
 		this.userService = userService;
 	}
-	
+
 	@RequestMapping (value = "/login", method = RequestMethod.POST)
 	@ResponseBody
 	@Override
-	public Map<String, Serializable> login(String username, String password) {
+	public Map<String, Serializable> login( String username, String password) {
+		//System.out.println(username+"   "+password);
 		Map<String, Serializable> result = new HashMap<>();
 		User user = userService.findUserByUsernamePassword(username, password);
 		result.put("status", "failure");
@@ -45,7 +43,7 @@ public class LoginControllerImpl implements ILoginController {
 		}
 		return result;
 	}
-	
+
 	@RequestMapping (value = "/logout", method = RequestMethod.POST)
 	@ResponseBody
 	@Override
@@ -55,7 +53,7 @@ public class LoginControllerImpl implements ILoginController {
 		result.put("status", "success");
 		return result;
 	}
-	
+
 	@RequestMapping (value = "/now", method = RequestMethod.POST)
 	@ResponseBody
 	@Override
@@ -76,7 +74,7 @@ public class LoginControllerImpl implements ILoginController {
 		}
 		return result;
 	}
-	
+
 	@RequestMapping (value = "/apply", method = RequestMethod.POST)
 	@ResponseBody
 	@Override
@@ -102,7 +100,7 @@ public class LoginControllerImpl implements ILoginController {
 		}
 		return result;
 	}
-	
+
 	@ResponseBody
 	@ExceptionHandler ({Exception.class})
 	public Map<String, Serializable> exceptionHandle(Exception e) {

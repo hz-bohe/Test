@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.io.Serializable;
@@ -20,7 +21,6 @@ import java.util.HashMap;
 import java.util.Map;
 
 @Controller
-@CrossOrigin
 @RequestMapping("/collection")
 public class CollectionControllerImpl implements ICollectionController {
     private final CollectionServiceImpl collectionService;
@@ -73,7 +73,7 @@ public class CollectionControllerImpl implements ICollectionController {
     @RequestMapping ("/show")
     @ResponseBody
     @Override
-    public Map<String, Serializable> showcollection(Integer userId,Integer offset) {
+    public Map<String, Serializable> showcollection(@RequestParam("userId") Integer userId,@RequestParam("offset") Integer offset) {
         Map<String, Serializable> result = new HashMap<>();
         if (offset == null) {
             offset = 0;
