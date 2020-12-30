@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cilicili.jz2.dao.CollectionMapper">
+
+    <resultMap id="BaseResultMap" type="cilicili.jz2.pojo.Collection">
+        <id column="collection_id" property="collectionId" />
+        <result column="user_id" property="userId" />
+        <result column="video_id" property="videoId" />
+    </resultMap>
+    <insert id="insert" parameterType="cilicili.jz2.pojo.Collection">
+    insert into collection (id,user_id,video_id)
+    values (#{id,jdbcType=INTEGER}, #{user_id,jdbcType=INTEGER}, #{video_id,jdbcType=INTEGER}
+      )
+  </insert>
+    <select id="showcollections" resultMap="BaseResultMap">
+    SELECT *
+    FROM videos AS a
+      JOIN
+      (SELECT
+         user_id,
+         video_id
+       FROM collection) AS b
+        ON a.id = b.video_id
+    WHERE b.user_id = #{userId}
+    ORDER BY a.id DESC
+  </select>
+</mapper>
