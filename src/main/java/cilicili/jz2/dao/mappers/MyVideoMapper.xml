@@ -5,7 +5,6 @@
     <id column="id" property="id"/>
     <result column="title" property="title"/>
     <result column="url" property="url"/>
-    <result column="upload_userid" property="uploadUserid"/>
     <result column="upload_time" property="uploadTime"/>
     <result column="count_play" property="countPlay"/>
     <result column="count_like" property="countLike"/>

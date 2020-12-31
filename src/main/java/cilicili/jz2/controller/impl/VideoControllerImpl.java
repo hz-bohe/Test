@@ -47,7 +47,6 @@ public class VideoControllerImpl implements IVideoController {
 		} else {
 			result.put("status", "success");
 			result.put("video", video);
-			System.out.println("111"+video.getUploadUserid()+video.getUploadTime());
 		}
 
 		return result;
