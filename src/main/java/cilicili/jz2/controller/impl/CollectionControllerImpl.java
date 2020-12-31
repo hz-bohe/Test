@@ -56,11 +56,6 @@ public class CollectionControllerImpl implements ICollectionController {
                 try {
                     collectionService.addcollection(collection);
                     result.put("status","success");
-
-                    /*videoService.addVideo(video);
-                    result.put("status", "success");
-                    video = videoService.findVideoByUrl(video.getUrl());
-                    result.put("video", video);*/
                 } catch (Exception e) {
                     result.put("msg", "未知错误");
                 }
@@ -73,7 +68,7 @@ public class CollectionControllerImpl implements ICollectionController {
     @RequestMapping ("/show")
     @ResponseBody
     @Override
-    public Map<String, Serializable> showcollection(@RequestParam("userId") Integer userId,@RequestParam("offset") Integer offset) {
+    public Map<String, Serializable> showcollection( Integer userId, Integer offset) {
         Map<String, Serializable> result = new HashMap<>();
         if (offset == null) {
             offset = 0;

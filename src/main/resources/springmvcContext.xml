@@ -11,12 +11,6 @@
          http://www.springframework.org/schema/context/spring-context.xsd">
 
   <context:component-scan base-package="cilicili.jz2.controller"/>
-  <mvc:annotation-driven>
-    <mvc:message-converters register-defaults="true">
-      <bean class="org.springframework.http.converter.StringHttpMessageConverter">
-        <constructor-arg value="UTF-8" />
-      </bean>
-    </mvc:message-converters>
-  </mvc:annotation-driven>
+  <mvc:annotation-driven/>
 
 </beans>
