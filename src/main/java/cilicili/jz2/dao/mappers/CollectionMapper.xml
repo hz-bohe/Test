@@ -9,7 +9,7 @@
     </resultMap>
     <insert id="insert" parameterType="cilicili.jz2.pojo.Collection">
     insert into collection (user_id,video_id)
-    values (#{user_id,jdbcType=INTEGER}, #{video_id,jdbcType=INTEGER}
+    values (#{userId,jdbcType=INTEGER}, #{videoId,jdbcType=INTEGER}
       )
   </insert>
     <select id="showcollections" resultMap="BaseResultMap">
