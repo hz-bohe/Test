@@ -8,8 +8,8 @@
         <result column="video_id" property="videoId" />
     </resultMap>
     <insert id="insert" parameterType="cilicili.jz2.pojo.Collection">
-    insert into collection (id,user_id,video_id)
-    values (#{id,jdbcType=INTEGER}, #{user_id,jdbcType=INTEGER}, #{video_id,jdbcType=INTEGER}
+    insert into collection (user_id,video_id)
+    values (#{user_id,jdbcType=INTEGER}, #{video_id,jdbcType=INTEGER}
       )
   </insert>
     <select id="showcollections" resultMap="BaseResultMap">
